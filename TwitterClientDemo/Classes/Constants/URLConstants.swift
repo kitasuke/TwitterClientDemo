@@ -1,5 +1,5 @@
 //
-//  StoryboardConstants.swift
+//  URLConstants.swift
 //  TwitterClientDemo
 //
 //  Created by Yusuke Kita on 5/20/15.
@@ -7,8 +7,3 @@
 //
 
 import Foundation
-
-enum StoryboardName: String {
-    case Home = "Home"
-    case Login = "Login"
-}

@@ -19,8 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let rootViewController = UIStoryboard(name: StoryboardName.Login.rawValue, bundle: nil).instantiateInitialViewController() as! UIViewController
-        self.window?.rootViewController = rootViewController
+        if let account = UserStore.sharedStore.account {
+            let rootViewController = UIStoryboard(name: StoryboardName.Home.rawValue, bundle: nil).instantiateInitialViewController() as! UINavigationController
+            self.window?.rootViewController = rootViewController
+        } else {
+            let rootViewController = UIStoryboard(name: StoryboardName.Login.rawValue, bundle: nil).instantiateInitialViewController() as! UIViewController
+            self.window?.rootViewController = rootViewController
+        }
         self.window?.makeKeyAndVisible()
         return true
     }

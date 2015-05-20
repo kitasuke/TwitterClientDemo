@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
         // prevent from double tap
         loginButton?.enabled = false
         
-        TwitterStore.sharedStore.login { [unowned self] (result: Result<ACAccount>) -> Void in
+        TwitterStore.sharedStore.login { [unowned self] (result: Result<[ACAccount]>) -> Void in
             let alertController: UIAlertController
             if let error = result.error {
                 alertController = LoginAlert.Failure.alertController
@@ -29,17 +29,28 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            if let account = result.value {
-                alertController = LoginAlert.Success(name: account.username, completionHandler: self.completionHandler).alertController
+            if let accounts = result.value {
+                alertController = LoginAlert.Account(accounts: accounts, completionHandler: { (account) -> Void in
+                    self.setupAccount(account)
+                }).alertController
                 self.presentViewController(alertController, animated: true, completion: nil)
                 return
             }
         }
     }
     
+    // MARK: - Account manager
+    
+    private func setupAccount(account: ACAccount) {
+        UserStore.sharedStore.account = account
+        
+        let alertController = LoginAlert.Success(name: account.username, completionHandler: openHome).alertController
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     // MARK: - Completion handler
     
-    private var completionHandler = { () -> Void in
+    private var openHome = { () -> Void in
         let rootViewController = UIStoryboard(name: StoryboardName.Home.rawValue, bundle: nil).instantiateInitialViewController() as! UINavigationController
         UIApplication.sharedApplication().keyWindow?.rootViewController = rootViewController
     }

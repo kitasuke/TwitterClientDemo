@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FollowersViewController.swift
 //  TwitterClientDemo
 //
 //  Created by Yusuke Kita on 5/20/15.
@@ -8,11 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FollowersViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        TwitterStore.sharedStore.fetchFollowers { (result: Result<NSDictionary>) -> Void in
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -20,10 +20,10 @@
             </objects>
             <point key="canvasLocation" x="-188" y="308"/>
         </scene>
-        <!--View Controller-->
+        <!--Followers View Controller-->
         <scene sceneID="VLt-iX-buA">
             <objects>
-                <viewController id="iru-VJ-cTn" customClass="ViewController" customModule="TwitterClientDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iru-VJ-cTn" customClass="FollowersViewController" customModule="TwitterClientDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pWB-nT-fPf"/>
                         <viewControllerLayoutGuide type="bottom" id="2RW-fX-zwA"/>

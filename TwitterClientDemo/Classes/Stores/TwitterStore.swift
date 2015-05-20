@@ -36,7 +36,7 @@ class TwitterStore {
         }
     }
     
-    internal func fetchFollowers(completionHandler: (Result<NSDictionary>) -> Void) {
+    internal func fetchFollowers(completionHandler: (Result<[String: AnyObject]>) -> Void) {
         let request = SLRequest(forServiceType: SLServiceTypeTwitter,
             requestMethod: .GET,
             URL: API.Followers.pathURL,
@@ -52,7 +52,14 @@ class TwitterStore {
             let result = NSJSONSerialization.JSONObjectWithData(data,
                 options: .AllowFragments,
                 error: nil) as! NSDictionary
-            completionHandler(Result(result))
+            
+            let paginator = Paginator(nextCursor: result["next_cursor"] as! Int, previousCursor: result["previous_cursor"] as! Int)
+            
+            var users = [User]()
+            for user in result["users"] as! [NSDictionary] {
+                users.append(User(dictionary: user))
+            }
+            completionHandler(Result(["paginator": paginator, "users": users]))
         }
     }
     

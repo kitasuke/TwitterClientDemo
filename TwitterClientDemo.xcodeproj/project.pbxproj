@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		70CE6CD11B0CCBDE008B200A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CE6CD01B0CCBDE008B200A /* User.swift */; };
+		70CE6CD31B0CD164008B200A /* Paginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CE6CD21B0CD164008B200A /* Paginator.swift */; };
 		70D15AEE1B0C24B400B417B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D15AED1B0C24B400B417B4 /* AppDelegate.swift */; };
 		70D15AF11B0C24B400B417B4 /* TwitterClientDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 70D15AEF1B0C24B400B417B4 /* TwitterClientDemo.xcdatamodeld */; };
 		70D15AF31B0C24B400B417B4 /* FollowersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D15AF21B0C24B400B417B4 /* FollowersViewController.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		70CE6CD01B0CCBDE008B200A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		70CE6CD21B0CD164008B200A /* Paginator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paginator.swift; sourceTree = "<group>"; };
 		70D15AE81B0C24B400B417B4 /* TwitterClientDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClientDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70D15AEC1B0C24B400B417B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70D15AED1B0C24B400B417B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				70D15B281B0C710900B417B4 /* Result.swift */,
+				70CE6CD01B0CCBDE008B200A /* User.swift */,
+				70CE6CD21B0CD164008B200A /* Paginator.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -331,8 +337,10 @@
 				70D15B251B0C39C100B417B4 /* URLConstants.swift in Sources */,
 				70D15B231B0C317E00B417B4 /* LoginViewController.swift in Sources */,
 				70D15B2F1B0C918800B417B4 /* UserStore.swift in Sources */,
+				70CE6CD11B0CCBDE008B200A /* User.swift in Sources */,
 				70D15B291B0C710900B417B4 /* Result.swift in Sources */,
 				70D15AF11B0C24B400B417B4 /* TwitterClientDemo.xcdatamodeld in Sources */,
+				70CE6CD31B0CD164008B200A /* Paginator.swift in Sources */,
 				70D15B2D1B0C7F9B00B417B4 /* AlertStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

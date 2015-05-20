@@ -14,7 +14,13 @@ class FollowersViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        TwitterStore.sharedStore.fetchFollowers { (result: Result<NSDictionary>) -> Void in
+        TwitterStore.sharedStore.fetchFollowers { (result: Result<[String: AnyObject]>) -> Void in
+            if let error = result.error {
+                return
+            }
+            
+            if let values = result.value {
+            }
         }
     }
 

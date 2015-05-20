@@ -13,22 +13,20 @@ class TwitterStore {
     
     static let sharedStore = TwitterStore()
     
-    internal func login() {
+    internal func login(completionHandler: (Result<ACAccount>) -> Void) {
         let accountStore = ACAccountStore()
         let accountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
         accountStore.requestAccessToAccountsWithType(accountType, options: nil) { (granted: Bool, error: NSError!) -> Void in
-            if error != nil {
-                return
-            }
-
-            if !granted {
+            if error != nil || !granted {
+                completionHandler(Result(error))
                 return
             }
 
             if let accounts = accountStore.accountsWithAccountType(accountType) as? [ACAccount] where accounts.count > 0 {
-                let account = accounts.first
-            } else {
+                completionHandler(Result(accounts.first!))
+                return
             }
+            completionHandler(Result(NSError()))
         }
     }
 }

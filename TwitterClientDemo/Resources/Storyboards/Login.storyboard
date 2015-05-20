@@ -15,8 +15,24 @@
                     <view key="view" contentMode="scaleToFill" id="Jmy-lk-3ui">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpM-gx-1dx">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <dataDetectorType key="dataDetectorTypes"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cpM-gx-1dx" firstAttribute="top" secondItem="Jmy-lk-3ui" secondAttribute="top" id="3gv-0D-o4Y"/>
+                            <constraint firstAttribute="trailing" secondItem="cpM-gx-1dx" secondAttribute="trailing" id="CkE-Fe-1go"/>
+                            <constraint firstItem="cpM-gx-1dx" firstAttribute="leading" secondItem="Jmy-lk-3ui" secondAttribute="leading" id="ccy-7N-dcF"/>
+                            <constraint firstItem="KR0-k3-KFY" firstAttribute="top" secondItem="cpM-gx-1dx" secondAttribute="bottom" id="gp5-AA-awC"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="cpM-gx-1dx" id="gge-B1-dsM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Reb-eW-OS6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

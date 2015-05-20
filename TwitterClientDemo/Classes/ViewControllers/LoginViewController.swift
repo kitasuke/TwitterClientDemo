@@ -9,5 +9,5 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    
+    @IBOutlet weak var webView: UIWebView?
 }

@@ -20,6 +20,7 @@
 		70D15B251B0C39C100B417B4 /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D15B241B0C39C100B417B4 /* URLConstants.swift */; };
 		70D15B271B0C436500B417B4 /* TwitterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D15B261B0C436500B417B4 /* TwitterStore.swift */; };
 		70D15B291B0C710900B417B4 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D15B281B0C710900B417B4 /* Result.swift */; };
+		70D15B2D1B0C7F9B00B417B4 /* AlertStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D15B2C1B0C7F9B00B417B4 /* AlertStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		70D15B241B0C39C100B417B4 /* URLConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLConstants.swift; path = Constants/URLConstants.swift; sourceTree = "<group>"; };
 		70D15B261B0C436500B417B4 /* TwitterStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterStore.swift; sourceTree = "<group>"; };
 		70D15B281B0C710900B417B4 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		70D15B2C1B0C7F9B00B417B4 /* AlertStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				70D15B261B0C436500B417B4 /* TwitterStore.swift */,
+				70D15B2C1B0C7F9B00B417B4 /* AlertStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				70D15B231B0C317E00B417B4 /* LoginViewController.swift in Sources */,
 				70D15B291B0C710900B417B4 /* Result.swift in Sources */,
 				70D15AF11B0C24B400B417B4 /* TwitterClientDemo.xcdatamodeld in Sources */,
+				70D15B2D1B0C7F9B00B417B4 /* AlertStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,25 +21,26 @@ class LoginViewController: UIViewController {
         TwitterStore.sharedStore.login { [unowned self] (result: Result<ACAccount>) -> Void in
             let alertController: UIAlertController
             if let error = result.error {
-                alertController = UIAlertController(title: "Error", message: "Please configure your twitter account in Setting", preferredStyle: .Alert)
-                let openSetting = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) -> Void in
-                })
-                alertController.addAction(openSetting)
+                alertController = LoginAlert.Failure.alertController
                 self.presentViewController(alertController, animated: true, completion: nil)
+                
+                // make it enabled to try again
                 self.loginButton?.enabled = true
                 return
             }
             
             if let account = result.value {
-                alertController = UIAlertController(title: "Success", message: "Welcome \(account.username)!", preferredStyle: .Alert)
-                let openFollowerList = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) -> Void in
-                    let rootViewController = UIStoryboard(name: StoryboardName.Home.rawValue, bundle: nil).instantiateInitialViewController() as! UINavigationController
-                    UIApplication.sharedApplication().keyWindow?.rootViewController = rootViewController
-                })
-                alertController.addAction(openFollowerList)
+                alertController = LoginAlert.Success(name: account.username, completionHandler: self.completionHandler).alertController
                 self.presentViewController(alertController, animated: true, completion: nil)
                 return
             }
         }
+    }
+    
+    // MARK: - Completion handler
+    
+    private var completionHandler = { () -> Void in
+        let rootViewController = UIStoryboard(name: StoryboardName.Home.rawValue, bundle: nil).instantiateInitialViewController() as! UINavigationController
+        UIApplication.sharedApplication().keyWindow?.rootViewController = rootViewController
     }
 }

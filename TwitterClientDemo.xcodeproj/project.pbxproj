@@ -15,6 +15,8 @@
 		70D15B071B0C24B400B417B4 /* TwitterClientDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D15B061B0C24B400B417B4 /* TwitterClientDemoTests.swift */; };
 		70D15B1A1B0C289200B417B4 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70D15B191B0C289200B417B4 /* Home.storyboard */; };
 		70D15B1D1B0C29D100B417B4 /* StoryboardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D15B1C1B0C29D100B417B4 /* StoryboardConstants.swift */; };
+		70D15B211B0C310B00B417B4 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70D15B201B0C310B00B417B4 /* Login.storyboard */; };
+		70D15B231B0C317E00B417B4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D15B221B0C317E00B417B4 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		70D15B061B0C24B400B417B4 /* TwitterClientDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterClientDemoTests.swift; sourceTree = "<group>"; };
 		70D15B191B0C289200B417B4 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Home.storyboard; path = Resources/Storyboards/Home.storyboard; sourceTree = "<group>"; };
 		70D15B1C1B0C29D100B417B4 /* StoryboardConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryboardConstants.swift; path = Constants/StoryboardConstants.swift; sourceTree = "<group>"; };
+		70D15B201B0C310B00B417B4 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Resources/Storyboards/Login.storyboard; sourceTree = "<group>"; };
+		70D15B221B0C317E00B417B4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				70D15AF21B0C24B400B417B4 /* ViewController.swift */,
+				70D15B221B0C317E00B417B4 /* LoginViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				70D15B191B0C289200B417B4 /* Home.storyboard */,
+				70D15B201B0C310B00B417B4 /* Login.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -278,6 +284,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70D15B211B0C310B00B417B4 /* Login.storyboard in Resources */,
 				70D15B1A1B0C289200B417B4 /* Home.storyboard in Resources */,
 				70D15AFB1B0C24B400B417B4 /* LaunchScreen.xib in Resources */,
 				70D15AF81B0C24B400B417B4 /* Images.xcassets in Resources */,
@@ -301,6 +308,7 @@
 				70D15AF31B0C24B400B417B4 /* ViewController.swift in Sources */,
 				70D15AEE1B0C24B400B417B4 /* AppDelegate.swift in Sources */,
 				70D15B1D1B0C29D100B417B4 /* StoryboardConstants.swift in Sources */,
+				70D15B231B0C317E00B417B4 /* LoginViewController.swift in Sources */,
 				70D15AF11B0C24B400B417B4 /* TwitterClientDemo.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,6 +499,7 @@
 				70D15B0C1B0C24B400B417B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		70D15B0D1B0C24B400B417B4 /* Build configuration list for PBXNativeTarget "TwitterClientDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +508,7 @@
 				70D15B0F1B0C24B400B417B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

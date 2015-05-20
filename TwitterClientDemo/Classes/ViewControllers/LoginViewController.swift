@@ -9,5 +9,11 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    @IBOutlet weak var webView: UIWebView?
+    @IBOutlet weak var loginButton: UIButton?
+    
+    // MARK: - IBActions
+    
+    @IBAction func loginWithTwitter(sender: AnyObject) {
+        TwitterStore.sharedStore.login()
+    }
 }

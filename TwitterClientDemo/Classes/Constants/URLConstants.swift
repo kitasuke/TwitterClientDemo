@@ -7,7 +7,3 @@
 //
 
 import Foundation
-
-public enum URL: String {
-    case Oauth2Token = "https://api.twitter.com/oauth2/token"
-}

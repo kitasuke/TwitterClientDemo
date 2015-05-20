@@ -8,4 +8,7 @@
 
 import Foundation
 
-let StoryboardNameHome = "Home"
+public enum StoryboardName: String {
+    case Home = "Home"
+    case Login = "Login"
+}

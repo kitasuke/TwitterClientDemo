@@ -17,8 +17,13 @@ class TwitterStore {
         let accountStore = ACAccountStore()
         let accountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
         accountStore.requestAccessToAccountsWithType(accountType, options: nil) { (granted: Bool, error: NSError!) -> Void in
-            if error != nil || !granted {
+            if error != nil {
                 completionHandler(Result(error))
+                return
+            }
+            
+            if !granted {
+                completionHandler(Result(NSError()))
                 return
             }
 

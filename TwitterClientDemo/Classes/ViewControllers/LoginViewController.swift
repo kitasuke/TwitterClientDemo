@@ -15,6 +15,9 @@ class LoginViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func loginWithTwitter(sender: AnyObject) {
+        // prevent from double tap
+        loginButton?.enabled = false
+        
         TwitterStore.sharedStore.login { [unowned self] (result: Result<ACAccount>) -> Void in
             let alertController: UIAlertController
             if let error = result.error {
@@ -23,6 +26,7 @@ class LoginViewController: UIViewController {
                 })
                 alertController.addAction(openSetting)
                 self.presentViewController(alertController, animated: true, completion: nil)
+                self.loginButton?.enabled = true
                 return
             }
             

@@ -50,8 +50,7 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
             let trimmedText = self.condenseWhitespace(text)
             if count(trimmedText) > 0 {
                 CommentStore.sharedStore.comment(trimmedText)
-                self.postingView?.textView?.endEditing(true)
-                self.postingView?.textView?.text = ""
+                postingView?.cleanup()
             }
         }
     }

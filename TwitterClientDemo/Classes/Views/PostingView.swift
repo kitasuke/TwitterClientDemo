@@ -23,6 +23,12 @@ class PostingView: UIView, UITextViewDelegate {
         lastTextSize = self.calculateTextSize("")
     }
     
+    internal func cleanup() {
+        textView?.endEditing(true)
+        textView?.text = ""
+        postingViewHeightConstraint?.constant = 48
+    }
+    
     // MARK: - UITextViewDelegate
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {

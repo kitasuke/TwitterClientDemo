@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    @IBOutlet weak var ProfileDetailView: UIView?
+    @IBOutlet weak var profileDetailView: ProfileDetailView?
     @IBOutlet weak var tableView: UITableView?
     
     // MARK: - Lifecycle
@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         self.setupNavigationBar()
+        profileDetailView?.setup()
     }
     
     // MARK: - Setup

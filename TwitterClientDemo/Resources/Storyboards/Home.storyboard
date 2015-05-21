@@ -49,7 +49,13 @@
                             <constraint firstItem="Nfd-3i-FLX" firstAttribute="leading" secondItem="TbB-k5-zFG" secondAttribute="leading" id="oKn-IV-ZWG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Twitter DM" id="qv4-Ku-0NW"/>
+                    <navigationItem key="navigationItem" title="Twitter DM" id="qv4-Ku-0NW">
+                        <barButtonItem key="rightBarButtonItem" title="Profile" id="2dS-iw-kQ5">
+                            <connections>
+                                <action selector="openMyProfileView:" destination="iru-VJ-cTn" id="utU-kW-P5p"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Nfd-3i-FLX" id="ebj-j0-df7"/>
                     </connections>

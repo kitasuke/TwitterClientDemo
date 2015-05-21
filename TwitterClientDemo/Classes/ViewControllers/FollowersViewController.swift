@@ -110,6 +110,14 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
+    // MARK: - IBAction
+    
+    @IBAction func openMyProfileView(sender: UIBarButtonItem) {
+        UserStore.sharedStore.currentUser = UserStore.sharedStore.me
+        let profileViewController = UIStoryboard(name: StoryboardName.Profile.rawValue, bundle: nil).instantiateInitialViewController() as! ProfileViewController
+        self.navigationController?.pushViewController(profileViewController, animated: true)
+    }
+    
     // MARK: - Setup
     
     private func setupTableView() {

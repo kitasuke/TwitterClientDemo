@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		701D35B41B0D9DC8008B3442 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701D35B31B0D9DC8008B3442 /* Comment.swift */; };
+		701D35B61B0D9E67008B3442 /* CommentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701D35B51B0D9E67008B3442 /* CommentStore.swift */; };
 		70CE6CD11B0CCBDE008B200A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CE6CD01B0CCBDE008B200A /* User.swift */; };
 		70CE6CD31B0CD164008B200A /* Paginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CE6CD21B0CD164008B200A /* Paginator.swift */; };
 		70CE6CD51B0CDFAF008B200A /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70CE6CD41B0CDFAF008B200A /* UserCell.xib */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		701D35B31B0D9DC8008B3442 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		701D35B51B0D9E67008B3442 /* CommentStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentStore.swift; sourceTree = "<group>"; };
 		70CE6CD01B0CCBDE008B200A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		70CE6CD21B0CD164008B200A /* Paginator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paginator.swift; sourceTree = "<group>"; };
 		70CE6CD41B0CDFAF008B200A /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserCell.xib; path = Resources/XIBFiles/UserCell.xib; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 				70D15B281B0C710900B417B4 /* Result.swift */,
 				70CE6CD01B0CCBDE008B200A /* User.swift */,
 				70CE6CD21B0CD164008B200A /* Paginator.swift */,
+				701D35B31B0D9DC8008B3442 /* Comment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 				70D15B261B0C436500B417B4 /* TwitterStore.swift */,
 				70D15B2C1B0C7F9B00B417B4 /* AlertStore.swift */,
 				70D15B2E1B0C918800B417B4 /* UserStore.swift */,
+				701D35B51B0D9E67008B3442 /* CommentStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -369,9 +375,11 @@
 				70D15B231B0C317E00B417B4 /* LoginViewController.swift in Sources */,
 				70D15B2F1B0C918800B417B4 /* UserStore.swift in Sources */,
 				70F020EF1B0D7E4B00CB7113 /* MessageViewController.swift in Sources */,
+				701D35B61B0D9E67008B3442 /* CommentStore.swift in Sources */,
 				70CE6CD11B0CCBDE008B200A /* User.swift in Sources */,
 				70D15B291B0C710900B417B4 /* Result.swift in Sources */,
 				70D15AF11B0C24B400B417B4 /* TwitterClientDemo.xcdatamodeld in Sources */,
+				701D35B41B0D9DC8008B3442 /* Comment.swift in Sources */,
 				70CE6CD31B0CD164008B200A /* Paginator.swift in Sources */,
 				70D15B2D1B0C7F9B00B417B4 /* AlertStore.swift in Sources */,
 			);

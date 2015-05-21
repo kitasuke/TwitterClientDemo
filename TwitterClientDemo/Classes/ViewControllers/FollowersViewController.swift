@@ -30,6 +30,7 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
         self.setupTableView()
         
         self.fetchFollowersList()
+        self.fetchMe()
     }
 
     override func didReceiveMemoryWarning() {
@@ -121,7 +122,7 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
     
     private func fetchFollowersList() {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> Void in
             TwitterStore.sharedStore.fetchFollowers { [unowned self] (result: Result<[String: AnyObject]>) -> Void in
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 if let error = result.error {
@@ -136,6 +137,14 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
                     })
                 }
             }
+        })
+    }
+    
+    private func fetchMe() {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
+            TwitterStore.sharedStore.fetchMe({ (result: Result<User>) -> Void in
+                // TODO
+            })
         })
     }
 }

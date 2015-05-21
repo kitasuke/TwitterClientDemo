@@ -11,6 +11,8 @@ import Accounts
 
 class UserStore {
     static let sharedStore = UserStore()
+    var me: User?
+    var currentUser: User?
     
     internal var account: ACAccount? {
         get {

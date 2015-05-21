@@ -42,9 +42,15 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
         let comment = comments[indexPath.row]
-        cell.textLabel?.text = comment.text
+        let cell: CommentCell
+        if comment.user == UserStore.sharedStore.me {
+            cell = tableView.dequeueReusableCellWithIdentifier(CellName.CommentMe.rawValue, forIndexPath: indexPath) as! CommentCellMe
+        } else {
+            cell = tableView.dequeueReusableCellWithIdentifier(CellName.CommentOther.rawValue, forIndexPath: indexPath) as! CommentCellOther
+        }
+
+        cell.setup(comment)
         return cell
     }
     
@@ -153,7 +159,7 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
     
     private func replyWithDelay(text: String) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
-            CommentStore.sharedStore.reply(text + text, user: UserStore.sharedStore.currentUser!, completionHandler: { [unowned self] (result: Result<Comment>) -> Void in
+            CommentStore.sharedStore.reply(text + " " + text, user: UserStore.sharedStore.currentUser!, completionHandler: { [unowned self] (result: Result<Comment>) -> Void in
                 if let comment = result.value {
                     self.showComment(comment)
                 }

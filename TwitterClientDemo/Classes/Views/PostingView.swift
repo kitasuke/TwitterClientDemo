@@ -27,6 +27,7 @@ class PostingView: UIView, UITextViewDelegate {
         textView?.endEditing(true)
         textView?.text = ""
         postingViewHeightConstraint?.constant = 48
+        lastTextSize = self.calculateTextSize("")
     }
     
     // MARK: - UITextViewDelegate

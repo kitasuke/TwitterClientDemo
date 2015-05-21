@@ -11,17 +11,15 @@ import Foundation
 class Tweet: NSObject {
     var id: String!
     var text: String!
-    var user: User!
     
     init(dictionary: NSDictionary) {
         self.id = dictionary["id"] as? String
         self.text = dictionary["text"] as? String
-        self.user = User(dictionary: dictionary["user"] as! NSDictionary)
     }
 }
 
 extension Tweet: Printable {
     override var description: String {
-        return "id: \(self.id), text: \(self.text), user: \(self.user)"
+        return "id: \(self.id), text: \(self.text)"
     }
 }

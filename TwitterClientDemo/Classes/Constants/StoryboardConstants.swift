@@ -20,4 +20,5 @@ enum CellName: String {
     case User = "UserCell"
     case CommentMe = "CommentCellMe"
     case CommentOther = "CommentCellOther"
+    case Tweet = "TweetCell"
 }

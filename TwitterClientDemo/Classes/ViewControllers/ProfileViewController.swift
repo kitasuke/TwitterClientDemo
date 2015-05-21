@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var profileDetailView: ProfileDetailView?
     @IBOutlet weak var tableView: UITableView?
     private var tweets = [Tweet]()
@@ -20,13 +20,36 @@ class ProfileViewController: UIViewController {
         
         self.setupNavigationBar()
         profileDetailView?.setup()
+        self.setupTableView()
+        
         self.fetchTimeline()
+    }
+    
+    // MARK: - UITableView
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return count(tweets)
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let tweet = tweets[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellName.Tweet.rawValue, forIndexPath: indexPath) as! TweetCell
+        cell.setup(tweet)
+        return cell
     }
     
     // MARK: - Setup
     
     private func setupNavigationBar() {
         self.navigationItem.title = UserStore.sharedStore.currentUser?.name
+    }
+    
+    private func setupTableView() {
+        tableView?.registerNib(UINib(nibName: CellName.Tweet.rawValue, bundle: nil), forCellReuseIdentifier: CellName.Tweet.rawValue)
     }
     
     // MARK: - Fetcher

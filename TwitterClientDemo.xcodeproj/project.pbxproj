@@ -20,6 +20,8 @@
 		70D00A841B0DF5B600C7656C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70D00A831B0DF5B600C7656C /* Profile.storyboard */; };
 		70D00A861B0DFAA500C7656C /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D00A851B0DFAA500C7656C /* ProfileDetailView.swift */; };
 		70D00A881B0E062500C7656C /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D00A871B0E062500C7656C /* Tweet.swift */; };
+		70D00A8A1B0E082400C7656C /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D00A891B0E082400C7656C /* TweetCell.swift */; };
+		70D00A8C1B0E095000C7656C /* TweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70D00A8B1B0E095000C7656C /* TweetCell.xib */; };
 		70D15AEE1B0C24B400B417B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D15AED1B0C24B400B417B4 /* AppDelegate.swift */; };
 		70D15AF11B0C24B400B417B4 /* TwitterClientDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 70D15AEF1B0C24B400B417B4 /* TwitterClientDemo.xcdatamodeld */; };
 		70D15AF31B0C24B400B417B4 /* FollowersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D15AF21B0C24B400B417B4 /* FollowersViewController.swift */; };
@@ -68,6 +70,8 @@
 		70D00A831B0DF5B600C7656C /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = Resources/Storyboards/Profile.storyboard; sourceTree = "<group>"; };
 		70D00A851B0DFAA500C7656C /* ProfileDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		70D00A871B0E062500C7656C /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		70D00A891B0E082400C7656C /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
+		70D00A8B1B0E095000C7656C /* TweetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TweetCell.xib; path = Resources/XIBFiles/TweetCell.xib; sourceTree = "<group>"; };
 		70D15AE81B0C24B400B417B4 /* TwitterClientDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClientDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70D15AEC1B0C24B400B417B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70D15AED1B0C24B400B417B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				70CE6CD61B0CE1B9008B200A /* UserCell.swift */,
+				70D00A891B0E082400C7656C /* TweetCell.swift */,
 				70F020EC1B0D6E6100CB7113 /* IndicatorCell.swift */,
 				70F020F01B0D7EC300CB7113 /* PostingView.swift */,
 				701D35B71B0DC332008B3442 /* CommentCellMe.swift */,
@@ -256,6 +261,7 @@
 			children = (
 				70CE6CD41B0CDFAF008B200A /* UserCell.xib */,
 				70F020EA1B0D6E1B00CB7113 /* IndicatorCell.xib */,
+				70D00A8B1B0E095000C7656C /* TweetCell.xib */,
 			);
 			name = XIBFiles;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 			files = (
 				70D15B211B0C310B00B417B4 /* Login.storyboard in Resources */,
 				70D15B1A1B0C289200B417B4 /* Home.storyboard in Resources */,
+				70D00A8C1B0E095000C7656C /* TweetCell.xib in Resources */,
 				70D00A841B0DF5B600C7656C /* Profile.storyboard in Resources */,
 				70D15AFB1B0C24B400B417B4 /* LaunchScreen.xib in Resources */,
 				70D15AF81B0C24B400B417B4 /* Images.xcassets in Resources */,
@@ -396,6 +403,7 @@
 				70F020F51B0D85A500CB7113 /* UserViewModel.swift in Sources */,
 				70CE6CD71B0CE1B9008B200A /* UserCell.swift in Sources */,
 				70F020ED1B0D6E6100CB7113 /* IndicatorCell.swift in Sources */,
+				70D00A8A1B0E082400C7656C /* TweetCell.swift in Sources */,
 				70D15B231B0C317E00B417B4 /* LoginViewController.swift in Sources */,
 				70D15B2F1B0C918800B417B4 /* UserStore.swift in Sources */,
 				70F020EF1B0D7E4B00CB7113 /* MessageViewController.swift in Sources */,

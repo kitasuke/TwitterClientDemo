@@ -49,7 +49,7 @@
                                         </variation>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="igd-Sp-Eph" firstAttribute="top" secondItem="SG4-YB-vEm" secondAttribute="top" constant="8" id="0We-na-y8u"/>
                                     <constraint firstAttribute="bottom" secondItem="AKJ-4l-7JH" secondAttribute="bottom" constant="8" id="5Oa-jZ-ju8"/>
@@ -90,6 +90,7 @@
                     </view>
                     <connections>
                         <outlet property="postingView" destination="SG4-YB-vEm" id="qXr-KB-BwD"/>
+                        <outlet property="postingViewBottomConstraint" destination="hSH-Ui-ODr" id="507-qW-Iec"/>
                         <outlet property="tableView" destination="Erm-vQ-39s" id="y6A-Xg-ngy"/>
                     </connections>
                 </viewController>

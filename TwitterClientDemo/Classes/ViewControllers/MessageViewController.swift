@@ -18,6 +18,7 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         
         self.setupNavigationBar()
+        self.setupPostingView()
     }
     
     // MARK: - UITableView
@@ -34,6 +35,11 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
         return UITableViewCell()
     }
     
+    // MARK: - Gesture handler
+    
+    internal func postComment(recognizer: UITapGestureRecognizer) {
+    }
+    
     // MARK: - Setup
     
     private func setupNavigationBar() {
@@ -41,5 +47,9 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
             let userViewModel = UserViewModel(user: user)
             self.navigationItem.title = userViewModel.screenName
         }
+    }
+    
+    private func setupPostingView() {
+        postingView?.postButton?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("postComment:")))
     }
 }

@@ -11,6 +11,7 @@ import Foundation
 enum StoryboardName: String {
     case Home = "Home"
     case Message = "Message"
+    case Profile = "Profile"
     case Login = "Login"
 }
 
@@ -19,4 +20,5 @@ enum CellName: String {
     case User = "UserCell"
     case CommentMe = "CommentCellMe"
     case CommentOther = "CommentCellOther"
+    case Tweet = "TweetCell"
 }

@@ -63,6 +63,31 @@ class TwitterStore {
         }
     }
     
+    internal func fetchTimeline(completionHandler: (Result<[Tweet]>) -> Void) {
+        let request = SLRequest(forServiceType: SLServiceTypeTwitter,
+            requestMethod: .GET,
+            URL: API.Tileline.pathURL,
+            parameters: ["user_id": UserStore.sharedStore.currentUser!.id])
+        request.account = UserStore.sharedStore.account
+        
+        request.performRequestWithHandler { (data: NSData!, response: NSHTTPURLResponse!, error: NSError!) -> Void in
+            if error != nil {
+                completionHandler(Result(error))
+                return
+            }
+            
+            let result = NSJSONSerialization.JSONObjectWithData(data,
+                options: .AllowFragments,
+                error: nil) as! NSArray
+            
+            var tweets = [Tweet]()
+            for tweet in result as! [NSDictionary] {
+                tweets.append(Tweet(dictionary: tweet))
+            }
+            completionHandler(Result(tweets))
+        }
+    }
+    
     internal func fetchMe(completionHandler: (Result<User>) -> Void) {
         let account = UserStore.sharedStore.account!
         let params = ["screen_name": account.username]

@@ -77,7 +77,8 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
         case Section.Contents.rawValue:
             let cell = tableView.dequeueReusableCellWithIdentifier(CellName.User.rawValue, forIndexPath: indexPath) as! UserCell
             let user = users[indexPath.row]
-            cell.setup(user)
+            cell.setup(indexPath.row, user: user)
+            self.registerGestureRecognizers(cell)
             return cell
         case Section.Loading.rawValue:
             let cell = tableView.dequeueReusableCellWithIdentifier(CellName.Indicator.rawValue, forIndexPath: indexPath) as! IndicatorCell
@@ -88,7 +89,18 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    // MARK: - Constructor
+    // MARK: - Gesture handler
+    
+    internal func openMessageView(recognizer: UITapGestureRecognizer) {
+        if let row = recognizer.view?.tag {
+            let user = users[row]
+            UserStore.sharedStore.currentUser = user
+            let messageViewController = UIStoryboard(name: StoryboardName.Message.rawValue, bundle: nil).instantiateInitialViewController() as! MessageViewController
+            self.navigationController?.pushViewController(messageViewController, animated: true)
+        }
+    }
+    
+    // MARK: - Setup
     
     private func setupTableView() {
         self.tableView?.estimatedRowHeight = CellHeightUser
@@ -97,6 +109,12 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
         self.tableView?.registerNib(UINib(nibName: userCellName, bundle: nil), forCellReuseIdentifier: userCellName)
         let indicatorCellName = CellName.Indicator.rawValue
         self.tableView?.registerNib(UINib(nibName: indicatorCellName, bundle: nil), forCellReuseIdentifier: indicatorCellName)
+    }
+    
+    private func registerGestureRecognizers(cell: UserCell) {
+        let selector = Selector("openMessageView:")
+        cell.nameLabel?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
+        cell.screenLabel?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
     }
     
     // MARK: - Fetcher

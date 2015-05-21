@@ -29,6 +29,9 @@
 		70D15B341B0CA31500B417B4 /* UserDefaultsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D15B331B0CA31500B417B4 /* UserDefaultsConstants.swift */; };
 		70F020EB1B0D6E1B00CB7113 /* IndicatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70F020EA1B0D6E1B00CB7113 /* IndicatorCell.xib */; };
 		70F020ED1B0D6E6100CB7113 /* IndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F020EC1B0D6E6100CB7113 /* IndicatorCell.swift */; };
+		70F020EF1B0D7E4B00CB7113 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F020EE1B0D7E4B00CB7113 /* MessageViewController.swift */; };
+		70F020F11B0D7EC300CB7113 /* PostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F020F01B0D7EC300CB7113 /* PostingView.swift */; };
+		70F020F31B0D7FC500CB7113 /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70F020F21B0D7FC500CB7113 /* Message.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,9 @@
 		70D15B331B0CA31500B417B4 /* UserDefaultsConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsConstants.swift; path = Stores/UserDefaultsConstants.swift; sourceTree = "<group>"; };
 		70F020EA1B0D6E1B00CB7113 /* IndicatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IndicatorCell.xib; path = Resources/XIBFiles/IndicatorCell.xib; sourceTree = "<group>"; };
 		70F020EC1B0D6E6100CB7113 /* IndicatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorCell.swift; sourceTree = "<group>"; };
+		70F020EE1B0D7E4B00CB7113 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		70F020F01B0D7EC300CB7113 /* PostingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingView.swift; sourceTree = "<group>"; };
+		70F020F21B0D7FC500CB7113 /* Message.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Message.storyboard; path = Resources/Storyboards/Message.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +169,7 @@
 			children = (
 				70CE6CD61B0CE1B9008B200A /* UserCell.swift */,
 				70F020EC1B0D6E6100CB7113 /* IndicatorCell.swift */,
+				70F020F01B0D7EC300CB7113 /* PostingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -182,6 +189,7 @@
 			children = (
 				70D15AF21B0C24B400B417B4 /* FollowersViewController.swift */,
 				70D15B221B0C317E00B417B4 /* LoginViewController.swift */,
+				70F020EE1B0D7E4B00CB7113 /* MessageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -207,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				70D15B191B0C289200B417B4 /* Home.storyboard */,
+				70F020F21B0D7FC500CB7113 /* Message.storyboard */,
 				70D15B201B0C310B00B417B4 /* Login.storyboard */,
 			);
 			name = Storyboards;
@@ -326,6 +335,7 @@
 				70D15AF81B0C24B400B417B4 /* Images.xcassets in Resources */,
 				70CE6CD51B0CDFAF008B200A /* UserCell.xib in Resources */,
 				70F020EB1B0D6E1B00CB7113 /* IndicatorCell.xib in Resources */,
+				70F020F31B0D7FC500CB7113 /* Message.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +356,7 @@
 				70D15B341B0CA31500B417B4 /* UserDefaultsConstants.swift in Sources */,
 				70D15AF31B0C24B400B417B4 /* FollowersViewController.swift in Sources */,
 				70D15AEE1B0C24B400B417B4 /* AppDelegate.swift in Sources */,
+				70F020F11B0D7EC300CB7113 /* PostingView.swift in Sources */,
 				70D15B1D1B0C29D100B417B4 /* StoryboardConstants.swift in Sources */,
 				70D15B271B0C436500B417B4 /* TwitterStore.swift in Sources */,
 				70D15B251B0C39C100B417B4 /* URLConstants.swift in Sources */,
@@ -353,6 +364,7 @@
 				70F020ED1B0D6E6100CB7113 /* IndicatorCell.swift in Sources */,
 				70D15B231B0C317E00B417B4 /* LoginViewController.swift in Sources */,
 				70D15B2F1B0C918800B417B4 /* UserStore.swift in Sources */,
+				70F020EF1B0D7E4B00CB7113 /* MessageViewController.swift in Sources */,
 				70CE6CD11B0CCBDE008B200A /* User.swift in Sources */,
 				70D15B291B0C710900B417B4 /* Result.swift in Sources */,
 				70D15AF11B0C24B400B417B4 /* TwitterClientDemo.xcdatamodeld in Sources */,

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nKm-ce-RVP">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--Message View Controller-->
+        <scene sceneID="3em-o1-DdI">
+            <objects>
+                <viewController id="nKm-ce-RVP" customClass="MessageViewController" customModule="TwitterClientDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mrc-4q-Vh1"/>
+                        <viewControllerLayoutGuide type="bottom" id="bzk-IV-kDl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BGz-Dk-nEu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Erm-vQ-39s">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="560"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="nKm-ce-RVP" id="0bV-np-dfW"/>
+                                    <outlet property="delegate" destination="nKm-ce-RVP" id="KZM-do-Umr"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SG4-YB-vEm" customClass="PostingView" customModule="TwitterClientDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="560" width="600" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="zSi-ag-oZD"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Erm-vQ-39s" secondAttribute="trailing" id="Jqc-4A-Z7c"/>
+                            <constraint firstItem="Erm-vQ-39s" firstAttribute="top" secondItem="BGz-Dk-nEu" secondAttribute="top" id="L9q-jc-tLp"/>
+                            <constraint firstAttribute="trailing" secondItem="SG4-YB-vEm" secondAttribute="trailing" id="cFg-Y2-mJU"/>
+                            <constraint firstAttribute="bottom" secondItem="SG4-YB-vEm" secondAttribute="bottom" id="hSH-Ui-ODr"/>
+                            <constraint firstItem="Erm-vQ-39s" firstAttribute="leading" secondItem="BGz-Dk-nEu" secondAttribute="leading" id="oA7-Id-EgS"/>
+                            <constraint firstItem="SG4-YB-vEm" firstAttribute="top" secondItem="Erm-vQ-39s" secondAttribute="bottom" id="tXx-3c-Bnd"/>
+                            <constraint firstItem="SG4-YB-vEm" firstAttribute="leading" secondItem="BGz-Dk-nEu" secondAttribute="leading" id="var-KN-kL5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="postingView" destination="SG4-YB-vEm" id="qXr-KB-BwD"/>
+                        <outlet property="tableView" destination="Erm-vQ-39s" id="y6A-Xg-ngy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FLi-b1-JBr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="221" y="355"/>
+        </scene>
+    </scenes>
+</document>

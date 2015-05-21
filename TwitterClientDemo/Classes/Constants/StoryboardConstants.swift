@@ -10,6 +10,7 @@ import Foundation
 
 enum StoryboardName: String {
     case Home = "Home"
+    case Message = "Message"
     case Login = "Login"
 }
 

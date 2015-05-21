@@ -19,3 +19,9 @@ class Comment: NSObject {
         self.replyTo = replyTo
     }
 }
+
+extension Comment: Printable {
+    override var description: String {
+        return "text: \(self.text), user: \(self.user.screenName), replyTo: \(self.replyTo.screenName)"
+    }
+}

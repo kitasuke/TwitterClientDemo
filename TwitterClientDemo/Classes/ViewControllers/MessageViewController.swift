@@ -13,6 +13,8 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var postingView: PostingView?
     @IBOutlet weak var postingViewBottomConstraint: NSLayoutConstraint?
     
+    private var comments = [Comment]()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -32,15 +34,18 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - UITableView
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 0
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return count(comments)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = UITableViewCell()
+        let comment = comments[indexPath.row]
+        cell.textLabel?.text = comment.text
+        return cell
     }
     
     // MARK: - Gesture handler
@@ -49,7 +54,9 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
         if let text = postingView?.textView?.text {
             let trimmedText = self.condenseWhitespace(text)
             if count(trimmedText) > 0 {
-                CommentStore.sharedStore.comment(trimmedText)
+                self.comment(trimmedText)
+                self.replyWithDelay(trimmedText)
+
                 postingView?.cleanup()
             }
         }
@@ -132,5 +139,30 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
     private func condenseWhitespace(string: String) -> String {
         let components = string.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).filter({!isEmpty($0)})
         return join(" ", components)
+    }
+    
+    // MARK: - Comment operator
+    
+    private func comment(text: String) {
+        CommentStore.sharedStore.comment(text, completionHandler: { [unowned self] (result: Result<Comment>) -> Void in
+            if let comment = result.value {
+                self.showComment(comment)
+            }
+        })
+    }
+    
+    private func replyWithDelay(text: String) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+            CommentStore.sharedStore.reply(text + text, user: UserStore.sharedStore.currentUser!, completionHandler: { [unowned self] (result: Result<Comment>) -> Void in
+                if let comment = result.value {
+                    self.showComment(comment)
+                }
+            })
+        })
+    }
+    
+    private func showComment(comment: Comment) {
+        self.comments.append(comment)
+        self.tableView?.reloadData()
     }
 }

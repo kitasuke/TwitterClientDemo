@@ -13,21 +13,22 @@ class CommentStore {
     
     // MARK: - API call
     
-    internal func comment(text: String) {
+    internal func comment(text: String, completionHandler: (Result<Comment>) -> Void) {
         // TODO
         if let me = UserStore.sharedStore.me, user = UserStore.sharedStore.currentUser {
-             self.addComment(text, user: me, replyTo: user)
+             self.addComment(text, user: me, replyTo: user, completionHandler: completionHandler)
         }
     }
     
-    internal func reply(text: String, user: User) {
+    internal func reply(text: String, user: User, completionHandler: (Result<Comment>) -> Void) {
         // TODO
         if let user = UserStore.sharedStore.currentUser, me = UserStore.sharedStore.me {
-            self.addComment(text, user: user, replyTo: me)
+            self.addComment(text, user: user, replyTo: me, completionHandler: completionHandler)
         }
     }
     
-    private func addComment(text: String, user: User, replyTo: User) {
-        
+    private func addComment(text: String, user: User, replyTo: User, completionHandler: (Result<Comment>) -> Void) {
+        let comment = Comment(text: text, user: user, replyTo: replyTo)
+        completionHandler(Result(comment))
     }
 }

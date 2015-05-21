@@ -54,6 +54,7 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
         let userInfo = notification.userInfo as! [String: AnyObject]
         if let startFrame = userInfo[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue(), let endFrame = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue() {
             
+            // calculate keyboard height to set bottom constant properly
             let keyboardHeight: CGFloat
             if CGRectGetMinY(startFrame) < CGRectGetMaxY(self.view.frame) {
                 keyboardHeight = CGRectGetHeight(endFrame) - CGRectGetHeight(startFrame)

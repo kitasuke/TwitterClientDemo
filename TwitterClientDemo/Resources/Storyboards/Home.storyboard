@@ -20,7 +20,7 @@
             </objects>
             <point key="canvasLocation" x="-188" y="308"/>
         </scene>
-        <!--Followers View Controller-->
+        <!--Twitter DM-->
         <scene sceneID="VLt-iX-buA">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="iru-VJ-cTn" customClass="FollowersViewController" customModule="TwitterClientDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -49,7 +49,7 @@
                             <constraint firstItem="Nfd-3i-FLX" firstAttribute="leading" secondItem="TbB-k5-zFG" secondAttribute="leading" id="oKn-IV-ZWG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="qv4-Ku-0NW"/>
+                    <navigationItem key="navigationItem" title="Twitter DM" id="qv4-Ku-0NW"/>
                     <connections>
                         <outlet property="tableView" destination="Nfd-3i-FLX" id="ebj-j0-df7"/>
                     </connections>

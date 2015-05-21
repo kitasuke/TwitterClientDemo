@@ -16,7 +16,8 @@ class UserCell: UITableViewCell {
     internal func setup(row: Int, user: User) {
         nameLabel?.text = user.name
         nameLabel?.tag = row
-        screenLabel?.text = "@" + user.screenName
+        let userViewModel = UserViewModel(user: user)
+        screenLabel?.text = userViewModel.screenName
         screenLabel?.tag = row
         if let imageURL = NSURL(string: user.profileImage), let imageData = NSData(contentsOfURL: imageURL) {
             profileImageView?.image = UIImage(data: imageData)

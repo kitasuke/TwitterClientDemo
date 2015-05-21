@@ -32,6 +32,7 @@
 		70F020EF1B0D7E4B00CB7113 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F020EE1B0D7E4B00CB7113 /* MessageViewController.swift */; };
 		70F020F11B0D7EC300CB7113 /* PostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F020F01B0D7EC300CB7113 /* PostingView.swift */; };
 		70F020F31B0D7FC500CB7113 /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70F020F21B0D7FC500CB7113 /* Message.storyboard */; };
+		70F020F51B0D85A500CB7113 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F020F41B0D85A500CB7113 /* UserViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		70F020EE1B0D7E4B00CB7113 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		70F020F01B0D7EC300CB7113 /* PostingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingView.swift; sourceTree = "<group>"; };
 		70F020F21B0D7FC500CB7113 /* Message.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Message.storyboard; path = Resources/Storyboards/Message.storyboard; sourceTree = "<group>"; };
+		70F020F41B0D85A500CB7113 /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 		70D15B151B0C280D00B417B4 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				70F020F41B0D85A500CB7113 /* UserViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				70D15B1D1B0C29D100B417B4 /* StoryboardConstants.swift in Sources */,
 				70D15B271B0C436500B417B4 /* TwitterStore.swift in Sources */,
 				70D15B251B0C39C100B417B4 /* URLConstants.swift in Sources */,
+				70F020F51B0D85A500CB7113 /* UserViewModel.swift in Sources */,
 				70CE6CD71B0CE1B9008B200A /* UserCell.swift in Sources */,
 				70F020ED1B0D6E6100CB7113 /* IndicatorCell.swift in Sources */,
 				70D15B231B0C317E00B417B4 /* LoginViewController.swift in Sources */,

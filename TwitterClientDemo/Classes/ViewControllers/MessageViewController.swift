@@ -38,7 +38,8 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
     
     private func setupNavigationBar() {
         if let user = UserStore.sharedStore.currentUser {
-            self.navigationItem.title = "@" + user.screenName
+            let userViewModel = UserViewModel(user: user)
+            self.navigationItem.title = userViewModel.screenName
         }
     }
 }

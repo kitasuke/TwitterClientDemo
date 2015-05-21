@@ -7,21 +7,17 @@
 //
 
 import Foundation
+import CoreData
 
-class Comment: NSObject {
-    var text: String
-    var user: User
-    var replyTo: User
-    
-    init(text: String, user: User, replyTo: User) {
-        self.text = text
-        self.user = user
-        self.replyTo = replyTo
-    }
+class Comment: NSManagedObject {
+    @NSManaged var text: String
+    @NSManaged var username: String
+    @NSManaged var replyTo: String
+    @NSManaged var createdAt: NSDate
 }
 
 extension Comment: Printable {
     override var description: String {
-        return "text: \(self.text), user: \(self.user.screenName), replyTo: \(self.replyTo.screenName)"
+        return "text: \(self.text), username: \(self.username), replyTo: \(self.replyTo)"
     }
 }

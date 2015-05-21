@@ -192,7 +192,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="left_bubble" width="43" height="32"/>
+        <image name="left_bubble" width="33" height="26"/>
         <image name="right_bubble" width="33" height="27"/>
     </resources>
 </document>

@@ -23,6 +23,9 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
         self.setupNavigationBar()
         self.setupPostingView()
         self.addKeyboardObserver()
+        
+        comments = CommentStore.sharedStore.fetchComments()
+        tableView?.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,7 +47,7 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let comment = comments[indexPath.row]
         let cell: CommentCell
-        if comment.user == UserStore.sharedStore.me {
+        if comment.username == UserStore.sharedStore.me?.screenName {
             cell = tableView.dequeueReusableCellWithIdentifier(CellName.CommentMe.rawValue, forIndexPath: indexPath) as! CommentCellMe
         } else {
             cell = tableView.dequeueReusableCellWithIdentifier(CellName.CommentOther.rawValue, forIndexPath: indexPath) as! CommentCellOther

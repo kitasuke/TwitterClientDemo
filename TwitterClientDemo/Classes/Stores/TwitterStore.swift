@@ -63,18 +63,18 @@ class TwitterStore {
         }
     }
     
-    internal func fetchMe(completionHandler: (Result<NSDictionary>) -> Void) {
+    internal func fetchMe(completionHandler: (Result<User>) -> Void) {
         let account = UserStore.sharedStore.account!
         let params = ["screen_name": account.username]
         self.fetchUser(params, completionHandler: completionHandler)
     }
     
-    internal func fetchUser(userID: String, userName: String, completionHandler: (Result<NSDictionary>) -> Void) {
+    internal func fetchUser(userID: String, userName: String, completionHandler: (Result<User>) -> Void) {
         let params = ["user_id": userID, "screen_name": userName]
         self.fetchUser(params, completionHandler: completionHandler)
     }
     
-    private func fetchUser(params: [NSObject: AnyObject], completionHandler: (Result<NSDictionary>) -> Void) {
+    private func fetchUser(params: [NSObject: AnyObject], completionHandler: (Result<User>) -> Void) {
         let request = SLRequest(forServiceType: SLServiceTypeTwitter,
             requestMethod: .GET,
             URL: API.User.pathURL,
@@ -87,10 +87,20 @@ class TwitterStore {
                 return
             }
             
+            // parse and object map
             let result = NSJSONSerialization.JSONObjectWithData(data,
                 options: .AllowFragments,
                 error: nil) as! NSDictionary
-            completionHandler(Result(result))
+            let user = User(dictionary: result)
+            
+            // store user data as me or other
+            if user.screenName == UserStore.sharedStore.account?.username {
+                UserStore.sharedStore.me = user
+            } else {
+                UserStore.sharedStore.currentUser = user
+            }
+            
+            completionHandler(Result(user))
         }
     }
 }

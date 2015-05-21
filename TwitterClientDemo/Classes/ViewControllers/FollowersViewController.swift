@@ -30,6 +30,7 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
         self.setupTableView()
         
         self.fetchFollowersList()
+        self.fetchMe()
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,7 +78,8 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
         case Section.Contents.rawValue:
             let cell = tableView.dequeueReusableCellWithIdentifier(CellName.User.rawValue, forIndexPath: indexPath) as! UserCell
             let user = users[indexPath.row]
-            cell.setup(user)
+            cell.setup(indexPath.row, user: user)
+            self.registerGestureRecognizers(cell)
             return cell
         case Section.Loading.rawValue:
             let cell = tableView.dequeueReusableCellWithIdentifier(CellName.Indicator.rawValue, forIndexPath: indexPath) as! IndicatorCell
@@ -88,7 +90,18 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    // MARK: - Constructor
+    // MARK: - Gesture handler
+    
+    internal func openMessageView(recognizer: UITapGestureRecognizer) {
+        if let row = recognizer.view?.tag {
+            let user = users[row]
+            UserStore.sharedStore.currentUser = user
+            let messageViewController = UIStoryboard(name: StoryboardName.Message.rawValue, bundle: nil).instantiateInitialViewController() as! MessageViewController
+            self.navigationController?.pushViewController(messageViewController, animated: true)
+        }
+    }
+    
+    // MARK: - Setup
     
     private func setupTableView() {
         self.tableView?.estimatedRowHeight = CellHeightUser
@@ -99,11 +112,17 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
         self.tableView?.registerNib(UINib(nibName: indicatorCellName, bundle: nil), forCellReuseIdentifier: indicatorCellName)
     }
     
+    private func registerGestureRecognizers(cell: UserCell) {
+        let selector = Selector("openMessageView:")
+        cell.nameLabel?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
+        cell.screenLabel?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
+    }
+    
     // MARK: - Fetcher
     
     private func fetchFollowersList() {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> Void in
             TwitterStore.sharedStore.fetchFollowers { [unowned self] (result: Result<[String: AnyObject]>) -> Void in
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 if let error = result.error {
@@ -118,6 +137,14 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
                     })
                 }
             }
+        })
+    }
+    
+    private func fetchMe() {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
+            TwitterStore.sharedStore.fetchMe({ (result: Result<User>) -> Void in
+                // TODO
+            })
         })
     }
 }

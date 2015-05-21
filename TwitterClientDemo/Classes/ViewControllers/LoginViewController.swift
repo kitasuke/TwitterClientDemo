@@ -44,6 +44,9 @@ class LoginViewController: UIViewController {
     private func setupAccount(account: ACAccount) {
         UserStore.sharedStore.account = account
         
+        TwitterStore.sharedStore.fetchMe { (result: Result<User>) -> Void in
+        }
+        
         let alertController = LoginAlert.Success(name: account.username, completionHandler: openHome).alertController
         self.presentViewController(alertController, animated: true, completion: nil)
     }

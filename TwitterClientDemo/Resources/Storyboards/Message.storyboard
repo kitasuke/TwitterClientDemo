@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Erm-vQ-39s">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="560"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="552"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="nKm-ce-RVP" id="0bV-np-dfW"/>
@@ -25,15 +25,16 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SG4-YB-vEm" customClass="PostingView" customModule="TwitterClientDemo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="560" width="600" height="40"/>
+                                <rect key="frame" x="0.0" y="552" width="600" height="48"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="igd-Sp-Eph">
-                                        <rect key="frame" x="16" y="8" width="504" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ca-Ez-3Ep">
+                                        <rect key="frame" x="16" y="8" width="504" height="32"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKJ-4l-7JH">
-                                        <rect key="frame" x="536" y="3" width="48" height="34"/>
+                                        <rect key="frame" x="536" y="7" width="48" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="p9b-Gb-5zP"/>
                                             <constraint firstAttribute="width" constant="48" id="uok-PX-FPk"/>
@@ -51,29 +52,28 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="igd-Sp-Eph" firstAttribute="top" secondItem="SG4-YB-vEm" secondAttribute="top" constant="8" id="0We-na-y8u"/>
+                                    <constraint firstItem="AKJ-4l-7JH" firstAttribute="leading" secondItem="3Ca-Ez-3Ep" secondAttribute="trailing" constant="16" id="1RE-Mj-FhZ"/>
                                     <constraint firstAttribute="bottom" secondItem="AKJ-4l-7JH" secondAttribute="bottom" constant="8" id="5Oa-jZ-ju8"/>
-                                    <constraint firstItem="AKJ-4l-7JH" firstAttribute="leading" secondItem="igd-Sp-Eph" secondAttribute="trailing" constant="16" id="Awn-3U-iTg"/>
+                                    <constraint firstItem="AKJ-4l-7JH" firstAttribute="centerY" secondItem="3Ca-Ez-3Ep" secondAttribute="centerY" id="AWO-Kj-hKk"/>
                                     <constraint firstAttribute="trailing" secondItem="AKJ-4l-7JH" secondAttribute="trailing" constant="16" id="FAw-QC-248"/>
                                     <constraint firstAttribute="trailing" secondItem="AKJ-4l-7JH" secondAttribute="trailing" constant="16" id="Yv2-Xi-8Ri"/>
                                     <constraint firstItem="AKJ-4l-7JH" firstAttribute="top" secondItem="SG4-YB-vEm" secondAttribute="top" constant="8" id="aVN-Lz-lmr"/>
-                                    <constraint firstItem="igd-Sp-Eph" firstAttribute="centerY" secondItem="AKJ-4l-7JH" secondAttribute="centerY" id="dMj-sH-MBu"/>
-                                    <constraint firstItem="igd-Sp-Eph" firstAttribute="leading" secondItem="SG4-YB-vEm" secondAttribute="leading" constant="16" id="kRP-ok-5as"/>
-                                    <constraint firstItem="AKJ-4l-7JH" firstAttribute="leading" secondItem="igd-Sp-Eph" secondAttribute="trailing" constant="16" id="lVz-cM-d34"/>
-                                    <constraint firstAttribute="bottom" secondItem="igd-Sp-Eph" secondAttribute="bottom" constant="8" id="qt0-v4-rcN"/>
-                                    <constraint firstAttribute="height" constant="40" id="zSi-ag-oZD"/>
+                                    <constraint firstItem="3Ca-Ez-3Ep" firstAttribute="leading" secondItem="SG4-YB-vEm" secondAttribute="leading" constant="16" id="hRA-xU-VZ2"/>
+                                    <constraint firstItem="3Ca-Ez-3Ep" firstAttribute="top" secondItem="SG4-YB-vEm" secondAttribute="top" constant="8" id="kSw-BT-Sz4"/>
+                                    <constraint firstAttribute="bottom" secondItem="3Ca-Ez-3Ep" secondAttribute="bottom" constant="8" id="v2W-fl-0Xr"/>
+                                    <constraint firstAttribute="height" constant="48" id="zSi-ag-oZD"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="5Oa-jZ-ju8"/>
-                                        <exclude reference="Awn-3U-iTg"/>
                                         <exclude reference="FAw-QC-248"/>
                                         <exclude reference="aVN-Lz-lmr"/>
                                     </mask>
                                 </variation>
                                 <connections>
                                     <outlet property="postButton" destination="AKJ-4l-7JH" id="lUj-Sn-O3V"/>
-                                    <outlet property="textField" destination="igd-Sp-Eph" id="sOe-ts-1Qs"/>
+                                    <outlet property="postingViewHeightConstraint" destination="zSi-ag-oZD" id="WR5-CF-Ug5"/>
+                                    <outlet property="textView" destination="3Ca-Ez-3Ep" id="g62-c0-SD9"/>
                                 </connections>
                             </view>
                         </subviews>

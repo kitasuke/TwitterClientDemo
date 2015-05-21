@@ -46,12 +46,12 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Gesture handler
     
     internal func postComment(recognizer: UITapGestureRecognizer) {
-        if let text = postingView?.textField?.text {
+        if let text = postingView?.textView?.text {
             let trimmedText = self.condenseWhitespace(text)
             if count(trimmedText) > 0 {
                 CommentStore.sharedStore.comment(trimmedText)
-                self.postingView?.textField?.endEditing(true)
-                self.postingView?.textField?.text = ""
+                self.postingView?.textView?.endEditing(true)
+                self.postingView?.textView?.text = ""
             }
         }
     }
@@ -92,6 +92,7 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     private func setupPostingView() {
+        postingView?.setup()
         postingView?.postButton?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("postComment:")))
     }
     

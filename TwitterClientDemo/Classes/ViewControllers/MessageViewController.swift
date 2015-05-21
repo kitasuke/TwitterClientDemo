@@ -46,6 +46,14 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Gesture handler
     
     internal func postComment(recognizer: UITapGestureRecognizer) {
+        if let text = postingView?.textField?.text {
+            let trimmedText = self.condenseWhitespace(text)
+            if count(trimmedText) > 0 {
+                CommentStore.sharedStore.comment(trimmedText)
+                self.postingView?.textField?.endEditing(true)
+                self.postingView?.textField?.text = ""
+            }
+        }
     }
     
     // MARK: - NSNotificationCenter
@@ -117,5 +125,12 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.view.setNeedsLayout()
                 self.view.layoutIfNeeded()
             }, completion: nil)
+    }
+    
+    // MARK: - String operator
+    
+    private func condenseWhitespace(string: String) -> String {
+        let components = string.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).filter({!isEmpty($0)})
+        return join(" ", components)
     }
 }

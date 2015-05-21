@@ -101,6 +101,15 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
+    internal func openProfileView(recognizer: UITapGestureRecognizer) {
+        if let row = recognizer.view?.tag {
+            let user = users[row]
+            UserStore.sharedStore.currentUser = user
+            let profileViewController = UIStoryboard(name: StoryboardName.Profile.rawValue, bundle: nil).instantiateInitialViewController() as! ProfileViewController
+            self.navigationController?.pushViewController(profileViewController, animated: true)
+        }
+    }
+    
     // MARK: - Setup
     
     private func setupTableView() {
@@ -116,6 +125,7 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
         let selector = Selector("openMessageView:")
         cell.nameLabel?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
         cell.screenLabel?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
+        cell.profileImageView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("openProfileView:")))
     }
     
     // MARK: - Fetcher

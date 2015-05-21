@@ -15,15 +15,15 @@ class UserCell: UITableViewCell {
     private var imageCache = NSCache()
     private var queue = NSOperationQueue()
     
-    internal func setup(row: Int, user: User) {
+    internal func setup(user: User, indexPath: NSIndexPath) {
         nameLabel?.text = user.name
-        nameLabel?.tag = row
+        nameLabel?.tag = indexPath.row
         let userViewModel = UserViewModel(user: user)
         screenLabel?.text = userViewModel.screenName
-        screenLabel?.tag = row
+        screenLabel?.tag = indexPath.row
         
         // use image on cache, if no exists, fetch and store it on cache
-        if let image = imageCache.objectForKey(row) as? UIImage {
+        if let image = imageCache.objectForKey(indexPath) as? UIImage {
             profileImageView?.image = image
         } else {
             let request = NSURLRequest(URL: NSURL(string: user.profileImage)!)
@@ -31,7 +31,7 @@ class UserCell: UITableViewCell {
                 queue: queue,
                 completionHandler: { [unowned self] (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
                     if let image = UIImage(data: data) {
-                        self.imageCache.setObject(image, forKey: row)
+                        self.imageCache.setObject(image, forKey: indexPath)
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.profileImageView?.image = image
                             self.profileImageView?.alpha = 0
@@ -42,7 +42,7 @@ class UserCell: UITableViewCell {
                     }
             })
         }
-        profileImageView?.tag = row
+        profileImageView?.tag = indexPath.row
         self.accessoryType = user.following == true ? .Checkmark : .None
     }
 }

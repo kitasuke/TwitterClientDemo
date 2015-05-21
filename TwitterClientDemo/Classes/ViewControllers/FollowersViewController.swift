@@ -78,7 +78,7 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
         case Section.Contents.rawValue:
             let cell = tableView.dequeueReusableCellWithIdentifier(CellName.User.rawValue, forIndexPath: indexPath) as! UserCell
             let user = users[indexPath.row]
-            cell.setup(indexPath.row, user: user)
+            cell.setup(user, indexPath: indexPath)
             self.registerGestureRecognizers(cell)
             return cell
         case Section.Loading.rawValue:
@@ -101,6 +101,23 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
+    internal func openProfileView(recognizer: UITapGestureRecognizer) {
+        if let row = recognizer.view?.tag {
+            let user = users[row]
+            UserStore.sharedStore.currentUser = user
+            let profileViewController = UIStoryboard(name: StoryboardName.Profile.rawValue, bundle: nil).instantiateInitialViewController() as! ProfileViewController
+            self.navigationController?.pushViewController(profileViewController, animated: true)
+        }
+    }
+    
+    // MARK: - IBAction
+    
+    @IBAction func openMyProfileView(sender: UIBarButtonItem) {
+        UserStore.sharedStore.currentUser = UserStore.sharedStore.me
+        let profileViewController = UIStoryboard(name: StoryboardName.Profile.rawValue, bundle: nil).instantiateInitialViewController() as! ProfileViewController
+        self.navigationController?.pushViewController(profileViewController, animated: true)
+    }
+    
     // MARK: - Setup
     
     private func setupTableView() {
@@ -116,6 +133,7 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
         let selector = Selector("openMessageView:")
         cell.nameLabel?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
         cell.screenLabel?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
+        cell.profileImageView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("openProfileView:")))
     }
     
     // MARK: - Fetcher

@@ -9,9 +9,13 @@
 import Foundation
 
 class UserViewModel: NSObject {
-    internal var screenName: String?
+    var screenName: String?
+    var followersCountString: String?
+    var friendsCountString: String?
     
     init(user: User) {
         self.screenName = "@" + user.screenName
+        self.followersCountString = "\(user.followersCount)"
+        self.friendsCountString = "\(user.friendsCount)"
     }
 }

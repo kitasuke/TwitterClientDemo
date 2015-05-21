@@ -12,3 +12,7 @@ enum StoryboardName: String {
     case Home = "Home"
     case Login = "Login"
 }
+
+enum CellName: String {
+    case User = "UserCell"
+}

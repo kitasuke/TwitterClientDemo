@@ -78,7 +78,7 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
         case Section.Contents.rawValue:
             let cell = tableView.dequeueReusableCellWithIdentifier(CellName.User.rawValue, forIndexPath: indexPath) as! UserCell
             let user = users[indexPath.row]
-            cell.setup(indexPath.row, user: user)
+            cell.setup(user, indexPath: indexPath)
             self.registerGestureRecognizers(cell)
             return cell
         case Section.Loading.rawValue:

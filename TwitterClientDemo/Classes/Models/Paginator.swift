@@ -11,14 +11,18 @@ import Foundation
 class Paginator: NSObject {
     var nextCursor: Int!
     var previousCursor: Int!
-    var hasNext: Bool!
-    var hasPrevious: Bool!
+    var hasNext: Bool
+    var hasPrevious: Bool
     
     init(nextCursor: Int!, previousCursor: Int!) {
         self.nextCursor = nextCursor
         self.previousCursor = previousCursor
         self.hasNext = nextCursor > 0
         self.hasPrevious = previousCursor > 0
+    }
+    
+    convenience override init() {
+        self.init(nextCursor: 0, previousCursor: 0)
     }
 }
 

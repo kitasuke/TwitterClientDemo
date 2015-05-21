@@ -27,6 +27,8 @@
 		70D15B2D1B0C7F9B00B417B4 /* AlertStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D15B2C1B0C7F9B00B417B4 /* AlertStore.swift */; };
 		70D15B2F1B0C918800B417B4 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D15B2E1B0C918800B417B4 /* UserStore.swift */; };
 		70D15B341B0CA31500B417B4 /* UserDefaultsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D15B331B0CA31500B417B4 /* UserDefaultsConstants.swift */; };
+		70F020EB1B0D6E1B00CB7113 /* IndicatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70F020EA1B0D6E1B00CB7113 /* IndicatorCell.xib */; };
+		70F020ED1B0D6E6100CB7113 /* IndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F020EC1B0D6E6100CB7113 /* IndicatorCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		70D15B2C1B0C7F9B00B417B4 /* AlertStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertStore.swift; sourceTree = "<group>"; };
 		70D15B2E1B0C918800B417B4 /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		70D15B331B0CA31500B417B4 /* UserDefaultsConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsConstants.swift; path = Stores/UserDefaultsConstants.swift; sourceTree = "<group>"; };
+		70F020EA1B0D6E1B00CB7113 /* IndicatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IndicatorCell.xib; path = Resources/XIBFiles/IndicatorCell.xib; sourceTree = "<group>"; };
+		70F020EC1B0D6E6100CB7113 /* IndicatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				70CE6CD61B0CE1B9008B200A /* UserCell.swift */,
+				70F020EC1B0D6E6100CB7113 /* IndicatorCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -211,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				70CE6CD41B0CDFAF008B200A /* UserCell.xib */,
+				70F020EA1B0D6E1B00CB7113 /* IndicatorCell.xib */,
 			);
 			name = XIBFiles;
 			sourceTree = "<group>";
@@ -319,6 +325,7 @@
 				70D15AFB1B0C24B400B417B4 /* LaunchScreen.xib in Resources */,
 				70D15AF81B0C24B400B417B4 /* Images.xcassets in Resources */,
 				70CE6CD51B0CDFAF008B200A /* UserCell.xib in Resources */,
+				70F020EB1B0D6E1B00CB7113 /* IndicatorCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +350,7 @@
 				70D15B271B0C436500B417B4 /* TwitterStore.swift in Sources */,
 				70D15B251B0C39C100B417B4 /* URLConstants.swift in Sources */,
 				70CE6CD71B0CE1B9008B200A /* UserCell.swift in Sources */,
+				70F020ED1B0D6E6100CB7113 /* IndicatorCell.swift in Sources */,
 				70D15B231B0C317E00B417B4 /* LoginViewController.swift in Sources */,
 				70D15B2F1B0C918800B417B4 /* UserStore.swift in Sources */,
 				70CE6CD11B0CCBDE008B200A /* User.swift in Sources */,

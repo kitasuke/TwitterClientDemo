@@ -14,5 +14,6 @@ enum StoryboardName: String {
 }
 
 enum CellName: String {
+    case Indicator = "IndicatorCell"
     case User = "UserCell"
 }

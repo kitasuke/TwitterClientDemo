@@ -128,9 +128,7 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     private func registerGestureRecognizers(cell: UserCell) {
-        let selector = Selector("openMessageView:")
-        cell.nameLabel?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
-        cell.screenLabel?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
+        cell.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("openMessageView:")))
         cell.profileImageView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("openProfileView:")))
     }
     

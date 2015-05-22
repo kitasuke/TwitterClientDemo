@@ -68,7 +68,7 @@ class TwitterStore {
         let request = SLRequest(forServiceType: SLServiceTypeTwitter,
             requestMethod: .GET,
             URL: API.Tileline.pathURL,
-            parameters: ["user_id": UserStore.sharedStore.currentUser!.id])
+            parameters: ["user_id": UserStore.sharedStore.currentUser!.id, "count": "200"])
         request.account = UserStore.sharedStore.account
         
         request.performRequestWithHandler { (data: NSData!, response: NSHTTPURLResponse!, error: NSError!) -> Void in

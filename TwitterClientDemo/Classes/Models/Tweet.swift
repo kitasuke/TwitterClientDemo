@@ -13,7 +13,7 @@ class Tweet: NSObject {
     var text: String!
     
     init(dictionary: NSDictionary) {
-        self.id = dictionary["id"] as? String
+        self.id = dictionary["id_str"] as? String
         self.text = dictionary["text"] as? String
     }
 }

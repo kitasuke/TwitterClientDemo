@@ -64,11 +64,19 @@ class TwitterStore {
         }
     }
     
-    internal func fetchTimeline(completionHandler: (Result<[Tweet]>) -> Void) {
+    internal func fetchTimeline(completionHandler: (Result<[Tweet]>) -> Void, sinceID: String?) {
+        let tweedID = sinceID ?? ""
+        
+        let baseParams = ["user_id": UserStore.sharedStore.currentUser!.id, "count": "20"]
+        var params = baseParams
+        if let tweedID = sinceID {
+            params["since_id"] = tweedID
+        }
+        
         let request = SLRequest(forServiceType: SLServiceTypeTwitter,
             requestMethod: .GET,
             URL: API.Tileline.pathURL,
-            parameters: ["user_id": UserStore.sharedStore.currentUser!.id, "count": "200"])
+            parameters: params)
         request.account = UserStore.sharedStore.account
         
         request.performRequestWithHandler { (data: NSData!, response: NSHTTPURLResponse!, error: NSError!) -> Void in

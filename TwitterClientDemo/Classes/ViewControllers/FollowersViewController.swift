@@ -143,6 +143,8 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 self.loading = false
                 if let error = result.error {
+                    let alertController = ConnectionAlert.Error(message: error.description).alertController
+                    self.presentViewController(alertController, animated: true, completion: nil)
                     return
                 }
                 

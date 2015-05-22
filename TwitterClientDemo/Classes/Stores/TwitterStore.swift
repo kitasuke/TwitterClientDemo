@@ -53,6 +53,11 @@ class TwitterStore {
             let result = NSJSONSerialization.JSONObjectWithData(data,
                 options: .AllowFragments,
                 error: nil) as! NSDictionary
+            if let error = result["errors"] as? NSArray, let info = error.firstObject as? NSDictionary, let code = info["code"] as? Int, let message = info["message"] as? String {
+                let errorInfo = NSError(domain: "TwitterClientDemo", code: code, userInfo: [NSLocalizedDescriptionKey: message])
+                completionHandler(Result(errorInfo))
+                return
+            }
             
             let paginator = Paginator(nextCursor: result["next_cursor"] as! Int, previousCursor: result["previous_cursor"] as! Int)
             

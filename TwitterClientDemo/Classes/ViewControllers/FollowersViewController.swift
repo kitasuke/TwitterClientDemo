@@ -28,7 +28,7 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
         
         self.setupTableView()
         
-        self.fetchFollowersList(false)
+        self.fetchFollowersList(readMore: false)
         self.fetchMeInBackground()
     }
 
@@ -84,7 +84,7 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         // read more if needed
         if paginator.hasNext && !loading && count(users) - 10 < indexPath.row { // TODO
-            self.fetchFollowersList(true)
+            self.fetchFollowersList(readMore: true)
         }
     }
     
@@ -134,7 +134,7 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
     
     // MARK: - Fetcher
     
-    private func fetchFollowersList(readMore: Bool) {
+    private func fetchFollowersList(#readMore: Bool) {
         loading = true
         let nextCorsor = readMore ? paginator.nextCursor : -1 // TODO
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true

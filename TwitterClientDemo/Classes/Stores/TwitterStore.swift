@@ -36,11 +36,12 @@ class TwitterStore {
         }
     }
     
-    internal func fetchFollowers(completionHandler: (Result<[String: AnyObject]>) -> Void) {
+    internal func fetchFollowers(completionHandler: (Result<[String: AnyObject]>) -> Void, nextCursor: Int?) {
+        let cursor = nextCursor ?? -1 // TODO
         let request = SLRequest(forServiceType: SLServiceTypeTwitter,
             requestMethod: .GET,
             URL: API.Followers.pathURL,
-            parameters: nil)
+            parameters: ["cursor": String(cursor)]) // convert to String, otherwise it'll ignored
         request.account = UserStore.sharedStore.account
         
         request.performRequestWithHandler { (data: NSData!, response: NSHTTPURLResponse!, error: NSError!) -> Void in

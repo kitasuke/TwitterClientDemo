@@ -46,7 +46,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         // read more if needed
         if !loading && count(tweets) - 10 < indexPath.row { // TODO
-            self.fetchTimeline(readMore: true)
+//            self.fetchTimeline(readMore: true) // TODO
         }
     }
     

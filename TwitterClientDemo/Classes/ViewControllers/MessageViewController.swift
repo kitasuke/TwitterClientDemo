@@ -28,6 +28,12 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView?.reloadData()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+//        self.scrollToBottom(animated: true) // TODO
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -172,5 +178,20 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
     private func showComment(comment: Comment) {
         self.comments.append(comment)
         self.tableView?.reloadData()
+//        self.scrollToBottom(animated: true) // TODO
+    }
+    
+    // MARK: - Scrolling manager
+    
+    private func scrollToBottom(#animated: Bool) {
+        if let tableView = self.tableView {
+            let sectionNumber = tableView.numberOfSections() - 1
+            let rowNumber = tableView.numberOfRowsInSection(sectionNumber)
+            if rowNumber == 0 {
+                return
+            }
+            println(rowNumber)
+            tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: rowNumber - 1, inSection: sectionNumber), atScrollPosition: .Bottom, animated: animated)
+        }
     }
 }

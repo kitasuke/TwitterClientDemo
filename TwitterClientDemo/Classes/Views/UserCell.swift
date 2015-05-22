@@ -16,6 +16,7 @@ class UserCell: UITableViewCell {
     private var queue = NSOperationQueue()
     
     internal func setup(user: User, indexPath: NSIndexPath) {
+        contentView.tag = indexPath.row
         nameLabel?.text = user.name
         nameLabel?.tag = indexPath.row
         let userViewModel = UserViewModel(user: user)

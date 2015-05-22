@@ -28,7 +28,7 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
         
         self.setupTableView()
         
-        self.fetchFollowersList(false)
+        self.fetchFollowersList(readMore: false)
         self.fetchMeInBackground()
     }
 
@@ -84,7 +84,7 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         // read more if needed
         if paginator.hasNext && !loading && count(users) - 10 < indexPath.row { // TODO
-            self.fetchFollowersList(true)
+            self.fetchFollowersList(readMore: true)
         }
     }
     
@@ -128,15 +128,13 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     private func registerGestureRecognizers(cell: UserCell) {
-        let selector = Selector("openMessageView:")
-        cell.nameLabel?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
-        cell.screenLabel?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: selector))
+        cell.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("openMessageView:")))
         cell.profileImageView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("openProfileView:")))
     }
     
     // MARK: - Fetcher
     
-    private func fetchFollowersList(readMore: Bool) {
+    private func fetchFollowersList(#readMore: Bool) {
         loading = true
         let nextCorsor = readMore ? paginator.nextCursor : -1 // TODO
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -145,6 +143,8 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 self.loading = false
                 if let error = result.error {
+                    let alertController = ConnectionAlert.Error(message: error.description).alertController
+                    self.presentViewController(alertController, animated: true, completion: nil)
                     return
                 }
                 

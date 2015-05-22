@@ -13,12 +13,11 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
     private var users = [User]()
     private var paginator = Paginator()
     private let CellHeightUser: CGFloat = 64
-    private let CellHeightLoading: CGFloat = 44
+    private var loading = false
     
     private enum Section: Int {
         case Indicator = 0
         case Contents = 1
-        case Loading = 2
     }
 
     // MARK: - Lifecycle
@@ -29,8 +28,8 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
         
         self.setupTableView()
         
-        self.fetchFollowersList()
-        self.fetchMe()
+        self.fetchFollowersList(false)
+        self.fetchMeInBackground()
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,7 +40,7 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
     // MARK: - UITableViewDelegate
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3 // Indicator + Contents + Loading
+        return 2 // Indicator + Contents
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,8 +49,6 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
             return count(users) > 0 ? 0 : 1 // show indicator if no contents
         case Section.Contents.rawValue:
             return count(users)
-        case Section.Loading.rawValue:
-            return paginator.hasNext ? 1 : 0 // show loading more if contents has more
         default:
             return 0
         }
@@ -63,8 +60,6 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
             return CGRectGetHeight(tableView.frame)
         case Section.Contents.rawValue:
             return CellHeightUser
-        case Section.Loading.rawValue:
-            return CellHeightLoading
         default:
             return 0
         }
@@ -81,12 +76,15 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
             cell.setup(user, indexPath: indexPath)
             self.registerGestureRecognizers(cell)
             return cell
-        case Section.Loading.rawValue:
-            let cell = tableView.dequeueReusableCellWithIdentifier(CellName.Indicator.rawValue, forIndexPath: indexPath) as! IndicatorCell
-            cell.start()
-            return cell
         default:
             return UITableViewCell()
+        }
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        // read more if needed
+        if paginator.hasNext && !loading && count(users) - 10 < indexPath.row { // TODO
+            self.fetchFollowersList(true)
         }
     }
     
@@ -138,27 +136,30 @@ class FollowersViewController: UIViewController, UITableViewDataSource, UITableV
     
     // MARK: - Fetcher
     
-    private func fetchFollowersList() {
+    private func fetchFollowersList(readMore: Bool) {
+        loading = true
+        let nextCorsor = readMore ? paginator.nextCursor : -1 // TODO
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> Void in
-            TwitterStore.sharedStore.fetchFollowers { [unowned self] (result: Result<[String: AnyObject]>) -> Void in
+            TwitterStore.sharedStore.fetchFollowers({ [unowned self] (result: Result<[String : AnyObject]>) -> Void in
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                self.loading = false
                 if let error = result.error {
                     return
                 }
                 
                 if let values = result.value {
-                    self.users = values["users"] as! [User]
+                    self.users += values["users"] as! [User]
                     self.paginator = values["paginator"] as! Paginator
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.tableView?.reloadData()
                     })
                 }
-            }
+            }, nextCursor: nextCorsor)
         })
     }
     
-    private func fetchMe() {
+    private func fetchMeInBackground() {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
             TwitterStore.sharedStore.fetchMe({ (result: Result<User>) -> Void in
                 // TODO

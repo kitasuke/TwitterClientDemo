@@ -43,6 +43,10 @@ class UserCell: UITableViewCell {
             })
         }
         profileImageView?.tag = indexPath.row
-        self.accessoryType = user.following == true ? .Checkmark : .None
+        if let following = user.following {
+            self.accessoryType = following ? .Checkmark : .None
+        } else {
+            self.accessoryType = .None
+        }
     }
 }

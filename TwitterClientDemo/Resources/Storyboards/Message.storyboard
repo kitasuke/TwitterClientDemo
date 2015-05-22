@@ -7,7 +7,7 @@
         <!--Message View Controller-->
         <scene sceneID="3em-o1-DdI">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="nKm-ce-RVP" customClass="MessageViewController" customModule="TwitterClientDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nKm-ce-RVP" customClass="MessageViewController" customModule="TwitterClientDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mrc-4q-Vh1"/>
                         <viewControllerLayoutGuide type="bottom" id="bzk-IV-kDl"/>

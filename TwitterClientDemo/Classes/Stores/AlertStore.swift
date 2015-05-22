@@ -41,3 +41,20 @@ enum LoginAlert {
         return alertController
     }
 }
+
+enum ConnectionAlert {
+    case Error(message: String)
+    
+    var alertController: UIAlertController {
+        let alertController: UIAlertController
+        let alertAction: UIAlertAction
+        switch self {
+        case .Error(let message):
+            alertController = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
+            alertAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) -> Void in
+            })
+        }
+        alertController.addAction(alertAction)
+        return alertController
+    }
+}

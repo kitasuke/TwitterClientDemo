@@ -53,6 +53,11 @@ class TwitterStore {
             let result = NSJSONSerialization.JSONObjectWithData(data,
                 options: .AllowFragments,
                 error: nil) as! NSDictionary
+            if let error = result["errors"] as? NSArray, let info = error.firstObject as? NSDictionary, let code = info["code"] as? Int, let message = info["message"] as? String {
+                let errorInfo = NSError(domain: "TwitterClientDemo", code: code, userInfo: [NSLocalizedDescriptionKey: message])
+                completionHandler(Result(errorInfo))
+                return
+            }
             
             let paginator = Paginator(nextCursor: result["next_cursor"] as! Int, previousCursor: result["previous_cursor"] as! Int)
             
@@ -64,11 +69,19 @@ class TwitterStore {
         }
     }
     
-    internal func fetchTimeline(completionHandler: (Result<[Tweet]>) -> Void) {
+    internal func fetchTimeline(completionHandler: (Result<[Tweet]>) -> Void, sinceID: String?) {
+        let tweedID = sinceID ?? ""
+        
+        let baseParams = ["user_id": UserStore.sharedStore.currentUser!.id, "count": "20"]
+        var params = baseParams
+        if let tweedID = sinceID {
+            params["since_id"] = tweedID
+        }
+        
         let request = SLRequest(forServiceType: SLServiceTypeTwitter,
             requestMethod: .GET,
             URL: API.Tileline.pathURL,
-            parameters: ["user_id": UserStore.sharedStore.currentUser!.id])
+            parameters: params)
         request.account = UserStore.sharedStore.account
         
         request.performRequestWithHandler { (data: NSData!, response: NSHTTPURLResponse!, error: NSError!) -> Void in

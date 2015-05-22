@@ -61,10 +61,9 @@ class MessageViewController: UIViewController, UITableViewDataSource, UITableVie
     
     internal func postComment(recognizer: UITapGestureRecognizer) {
         if let text = postingView?.textView?.text {
-            let trimmedText = self.condenseWhitespace(text)
-            if count(trimmedText) > 0 {
-                self.comment(trimmedText)
-                self.replyWithDelay(trimmedText)
+            if count(self.condenseWhitespace(text)) > 0 {
+                self.comment(text)
+                self.replyWithDelay(text)
 
                 postingView?.cleanup()
             }
